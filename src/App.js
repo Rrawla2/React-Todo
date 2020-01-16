@@ -1,6 +1,7 @@
 import React from 'react';// Can put import React, { component } from "react";
 import TodoForm from "./components/TodoComponents/TodoForm";
 import TodoList from "./components/TodoComponents/TodoList";
+import "./styles.css";
 
 const todo = [
   {
@@ -15,15 +16,31 @@ const todo = [
   }
 ];
 
-
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       todoList: todo //This will eventually be [] coming from an API
-      
     }
-    
+  }
+
+  toggleTodo = (id) => {
+    // find todo clicked and toggle the completed to true
+    // update state with the new values
+    const newTodoList = this.state.todoList.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          completed: !item.completed
+        } 
+            
+        }else
+        return item;
+      }
+    )
+    // update the state with the new values for todoList
+    this.setState({
+      todoList: newTodoList});
   }
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -35,7 +52,8 @@ class App extends React.Component {
         <h2>Todo List</h2>
         <TodoForm />
         <div>
-        <TodoList todo={this.state.todoList}/>
+        {/* this.toggleTodo is a class method so it's listed here with this. */}
+          <TodoList todo={this.state.todoList} toggleTodo={this.toggleTodo}/>
         
         </div>
       </div>
