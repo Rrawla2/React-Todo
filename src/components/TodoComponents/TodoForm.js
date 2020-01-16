@@ -12,17 +12,17 @@ class TodoForm extends Component {
         this.setState({ ...this.state, newTodo: event.target.value})
     }
 
-    onSubmit = event => {
+    handleSubmit = event => {
         event.preventDefault();
         this.props.addNewTodo(this.state.newTodo)
     }
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.handleSubmit}>
                 <input onChange={this.handleChange} type="text" name="item" value={this.state.newTodo} />
             
-                <button>Add New Item</button>
+                <button className="clr-btn">Add Task</button>
 
             </form>
         )
