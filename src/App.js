@@ -1,4 +1,4 @@
-import React from 'react';// Can put import React, { component } from "react";
+import React, { Component } from 'react';// Can put import React, { Component } from "react";
 import TodoForm from "./components/TodoComponents/TodoForm";
 import TodoList from "./components/TodoComponents/TodoList";
 import "./styles.css";
@@ -16,14 +16,14 @@ const todo = [
   }
 ];
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
       todoList: todo //This will eventually be [] coming from an API
     }
   }
-  
+
   toggleTodo = (id) => {
     // find todo clicked and toggle the completed to true
     // update state with the new values
@@ -49,13 +49,14 @@ class App extends React.Component {
     
   render() {
     return (
-      <div>
-        <h2>Todo List</h2>
-        <TodoForm />
+      <div className="App">
+        <div className="header">
+          <h1>Todo List</h1>
+          <TodoForm />
+        </div>
         <div>
         {/* this.toggleTodo is a class method so it's listed here with this. */}
           <TodoList todo={this.state.todoList} toggleTodo={this.toggleTodo}/>
-        
         </div>
       </div>
     );
