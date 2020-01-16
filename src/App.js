@@ -2,6 +2,19 @@ import React from 'react';
 import TodoForm from "./components/TodoComponents/TodoForm";
 import TodoList from "./components/TodoComponents/TodoList";
 
+const todo = [
+  {
+    task: 'Organize Garage',
+    id: 1528817077286,
+    completed: false
+  },
+  {
+    task: 'Bake Cookies',
+    id: 1528817084358,
+    completed: false
+  }
+];
+
 class App extends React.Component {
   constructor() {
     super();
@@ -17,7 +30,7 @@ class App extends React.Component {
       <div>
         <h2>Todo List</h2>
         <TodoForm />
-        <TodoList />
+        <TodoList todo={todo}/>
       </div>
     );
   }
