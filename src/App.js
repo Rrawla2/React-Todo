@@ -44,7 +44,7 @@ class App extends Component {
     this.setState({
       todoList: newTodoList});
   }
-
+// add a new task to the todo list
   addNewTodo = newTodoTask => {
     const newTodo = {
       ...this.state,
@@ -54,6 +54,16 @@ class App extends Component {
       ]
     }
     this.setState(newTodo)
+  }
+// clear completed items from the list
+  clearCompleted = () => {
+    const clearTask = {
+      ...this.state,
+      todoList: this.state.todoList.filter(item => {
+        return !item.completed
+      })
+    }
+    this.setState(clearTask)
   }
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -69,7 +79,7 @@ class App extends Component {
         </div>
         <div>
         {/* this.toggleTodo is a class method so it's listed here with this. */}
-          <TodoList todo={this.state.todoList} toggleTodo={this.toggleTodo}/>
+          <TodoList todo={this.state.todoList} toggleTodo={this.toggleTodo} clearCompleted={this.clearCompleted}/>
         </div>
       </div>
     );
