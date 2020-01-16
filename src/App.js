@@ -1,25 +1,13 @@
-import React from 'react';
+import React from 'react';// Can put import React, { component } from "react";
 import TodoForm from "./components/TodoComponents/TodoForm";
 import TodoList from "./components/TodoComponents/TodoList";
-
-const todo = [
-  {
-    task: 'Organize Garage',
-    id: 1528817077286,
-    completed: false
-  },
-  {
-    task: 'Bake Cookies',
-    id: 1528817084358,
-    completed: false
-  }
-];
+import "./components/data";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: "todo"
+      todoList: "todo" //This will eventually be [] coming from an API
     }
   }
   // you will need a place to store your state in this component.
@@ -31,7 +19,7 @@ class App extends React.Component {
         <h2>Todo List</h2>
         <TodoForm />
         <div>
-        <TodoList todo={todo}/>
+        <TodoList todo={this.state.todoList}/>
         </div>
       </div>
     );
