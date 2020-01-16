@@ -22,9 +22,11 @@ class App extends Component {
     this.state = {
       todoList: todo //This will eventually be [] coming from an API
     }
+    console.log("todo", todo)
   }
 
   toggleTodo = (id) => {
+    console.log("ID", id)
     // find todo clicked and toggle the completed to true
     // update state with the new values
     const newTodoList = this.state.todoList.map(item => {
@@ -42,6 +44,17 @@ class App extends Component {
     this.setState({
       todoList: newTodoList});
   }
+
+  addNewTodo = newTodoTask => {
+    const newTodo = {
+      ...this.state,
+      todoList: [
+        ...this.state.todoList,
+        { task: newTodoTask, completed: false, id: Date.now() }
+      ]
+    }
+    this.setState(newTodo)
+  }
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
     // this component is going to take care of state, and any change handlers you need to work with your state
@@ -52,7 +65,7 @@ class App extends Component {
       <div className="App">
         <div className="header">
           <h1>Todo List</h1>
-          <TodoForm />
+          <TodoForm addNewTodo={this.addNewTodo}/>
         </div>
         <div>
         {/* this.toggleTodo is a class method so it's listed here with this. */}

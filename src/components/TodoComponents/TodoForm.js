@@ -9,7 +9,7 @@ class TodoForm extends Component {
     }
     
     handleChange = event => {
-        this.setState({ ...this.state, newTodo: event.target.value})
+        this.setState({ ...this.state, newTodo: event.target.value })
     }
 
     handleSubmit = event => {
